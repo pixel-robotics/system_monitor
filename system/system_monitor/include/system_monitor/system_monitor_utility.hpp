@@ -37,8 +37,7 @@ typedef struct thermal_zone
   std::string label_;  //!< @brief thermal_zone[0-9]
   std::string path_;   //!< @brief sysfs path to temperature
 
-  thermal_zone()
-  : type_(), label_(), path_() {}
+  thermal_zone() : type_(), label_(), path_() {}
   thermal_zone(const std::string & type, const std::string & label, const std::string & path)
   : type_(type), label_(label), path_(path)
   {
@@ -64,8 +63,7 @@ public:
     const fs::path root("/sys/class/thermal");
 
     for (const fs::path & path :
-      boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator()))
-    {
+         boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator())) {
       if (!fs::is_directory(path)) {
         continue;
       }

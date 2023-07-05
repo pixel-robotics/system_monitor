@@ -31,8 +31,7 @@
 /**
  * @brief Enumeration of Request ID to hdd_reader
  */
-enum HddReaderRequestId
-{
+enum HddReaderRequestId {
   GetHddInfo,
   UnmountDevice,
 };
@@ -56,7 +55,7 @@ struct HddDevice
    * @note NOLINT syntax is needed since this is an interface to serialization and
    * used inside boost serialization.
    */
-  template<typename archive>
+  template <typename archive>
   void serialize(archive & ar, const unsigned /*version*/)  // NOLINT(runtime/references)
   {
     ar & name_;
@@ -93,7 +92,7 @@ struct HddInfo
    * @note NOLINT syntax is needed since this is an interface to serialization and
    * used inside boost serialization.
    */
-  template<typename archive>
+  template <typename archive>
   void serialize(archive & ar, const unsigned /*version*/)  // NOLINT(runtime/references)
   {
     ar & error_code_;
@@ -124,7 +123,7 @@ struct UnmountDeviceInfo
    * @note NOLINT syntax is needed since this is an interface to serialization and
    * used inside boost serialization.
    */
-  template<typename archive>
+  template <typename archive>
   void serialize(archive & ar, const unsigned /*version*/)  // NOLINT(runtime/references)
   {
     ar & part_device_;

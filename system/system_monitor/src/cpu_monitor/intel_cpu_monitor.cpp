@@ -38,8 +38,7 @@
 
 namespace fs = boost::filesystem;
 
-CPUMonitor::CPUMonitor(const rclcpp::NodeOptions & options)
-: CPUMonitorBase("cpu_monitor", options)
+CPUMonitor::CPUMonitor(const rclcpp::NodeOptions & options) : CPUMonitorBase("cpu_monitor", options)
 {
   msr_reader_port_ = declare_parameter<int>("msr_reader_port", 7634);
 
@@ -136,8 +135,7 @@ void CPUMonitor::checkThrottling(diagnostic_updater::DiagnosticStatusWrapper & s
   int index = 0;
 
   for (auto itr = info.pkg_thermal_status_.begin(); itr != info.pkg_thermal_status_.end();
-    ++itr, ++index)
-  {
+       ++itr, ++index) {
     if (*itr) {
       level = DiagStatus::ERROR;
     } else {
@@ -164,8 +162,7 @@ void CPUMonitor::getTempNames()
   }
 
   for (const fs::path & path : boost::make_iterator_range(
-      fs::recursive_directory_iterator(root), fs::recursive_directory_iterator()))
-  {
+         fs::recursive_directory_iterator(root), fs::recursive_directory_iterator())) {
     if (fs::is_directory(path)) {
       continue;
     }
@@ -195,20 +192,19 @@ void CPUMonitor::getTempNames()
     temps_.push_back(temp);
   }
 
-  std::sort(
-    temps_.begin(), temps_.end(), [](const cpu_temp_info & c1, const cpu_temp_info & c2) {
-      std::smatch match;
-      const std::regex filter(".*temp(\\d+)_input");
-      int n1 = 0;
-      int n2 = 0;
-      if (std::regex_match(c1.path_, match, filter)) {
-        n1 = std::stoi(match[1].str());
-      }
-      if (std::regex_match(c2.path_, match, filter)) {
-        n2 = std::stoi(match[1].str());
-      }
-      return n1 < n2;
-    }); // NOLINT
+  std::sort(temps_.begin(), temps_.end(), [](const cpu_temp_info & c1, const cpu_temp_info & c2) {
+    std::smatch match;
+    const std::regex filter(".*temp(\\d+)_input");
+    int n1 = 0;
+    int n2 = 0;
+    if (std::regex_match(c1.path_, match, filter)) {
+      n1 = std::stoi(match[1].str());
+    }
+    if (std::regex_match(c2.path_, match, filter)) {
+      n2 = std::stoi(match[1].str());
+    }
+    return n1 < n2;
+  });  // NOLINT
 }
 
 #include <rclcpp_components/register_node_macro.hpp>

@@ -50,21 +50,21 @@ public:
     array_ = *diag_msg;
   }
 
-  void addTempName(const std::string & path) {temps_.emplace_back(path, path);}
-  void clearTempNames() {temps_.clear();}
+  void addTempName(const std::string & path) { temps_.emplace_back(path, path); }
+  void clearTempNames() { temps_.clear(); }
 
-  void addFreqName(int index, const std::string & path) {freqs_.emplace_back(index, path);}
-  void clearFreqNames() {freqs_.clear();}
+  void addFreqName(int index, const std::string & path) { freqs_.emplace_back(index, path); }
+  void clearFreqNames() { freqs_.clear(); }
 
-  void setMpstatExists(bool mpstat_exists) {mpstat_exists_ = mpstat_exists;}
+  void setMpstatExists(bool mpstat_exists) { mpstat_exists_ = mpstat_exists; }
 
-  void changeUsageWarn(float usage_warn) {usage_warn_ = usage_warn;}
-  void changeUsageError(float usage_error) {usage_error_ = usage_error;}
+  void changeUsageWarn(float usage_warn) { usage_warn_ = usage_warn; }
+  void changeUsageError(float usage_error) { usage_error_ = usage_error; }
 
-  void changeLoad1Warn(float load1_warn) {load1_warn_ = load1_warn;}
-  void changeLoad5Warn(float load5_warn) {load5_warn_ = load5_warn;}
+  void changeLoad1Warn(float load1_warn) { load1_warn_ = load1_warn; }
+  void changeLoad5Warn(float load5_warn) { load5_warn_ = load5_warn; }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
   const std::string removePrefix(const std::string & name)
   {
@@ -672,7 +672,7 @@ public:
   : CPUMonitorBase(node_name, options)
   {
   }
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 };
 
 TEST_F(CPUMonitorTestSuite, dummyCPUMonitorTest)

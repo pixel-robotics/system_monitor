@@ -38,7 +38,7 @@ public:
     array_ = *diag_msg;
   }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
 private:
   diagnostic_msgs::msg::DiagnosticArray array_;
@@ -65,10 +65,11 @@ protected:
     monitor_->getFreqNames();
   }
 
-  void TearDown() {rclcpp::shutdown();}
+  void TearDown() { rclcpp::shutdown(); }
 };
 
-TEST_F(CPUMonitorTestSuite, test) {
+TEST_F(CPUMonitorTestSuite, test)
+{
   ASSERT_TRUE(true);
 }
 

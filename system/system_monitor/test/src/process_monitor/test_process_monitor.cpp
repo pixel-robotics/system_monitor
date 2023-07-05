@@ -47,9 +47,9 @@ public:
     array_ = *diag_msg;
   }
 
-  int getNumOfProcs() const {return num_of_procs_;}
+  int getNumOfProcs() const { return num_of_procs_; }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
   const std::string removePrefix(const std::string & name)
   {

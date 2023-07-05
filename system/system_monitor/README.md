@@ -1,13 +1,3 @@
-# System monitor
-
-taken from https://github.com/autowarefoundation/autoware.universe/tree/main/system/system_monitor
-
-extracted, because it originally depends on the (huge) tier4 autoware messages and some helper classes
-
-removed traffic monitor
-
-see https://lvserv01.logivations.com/browse/AMRFM-3528
-
 # System Monitor for Autoware
 
 **Further improvement of system monitor functionality for Autoware.**
@@ -83,7 +73,8 @@ Every topic is published in 1 minute interval.
 |                 | HDD WriteIOPS                |   ✓   |      ✓       |      ✓       |                                                                                                                                                                                                 |
 |                 | HDD Connection               |   ✓   |      ✓       |      ✓       |                                                                                                                                                                                                 |
 | Memory Monitor  | Memory Usage                 |   ✓   |      ✓       |      ✓       |                                                                                                                                                                                                 |
-| Net Monitor     | Network Usage                |   ✓   |      ✓       |      ✓       |                                                                                                                                                                                                 |
+| Net Monitor     | Network Connection           |   ✓   |      ✓       |      ✓       |                                                                                                                                                                                                 |
+|                 | Network Usage                |   ✓   |      ✓       |      ✓       | Notification of usage only, normally error not generated.                                                                                                                                       |
 |                 | Network CRC Error            |   ✓   |      ✓       |      ✓       | Warning occurs when the number of CRC errors in the period reaches the threshold value. The number of CRC errors that occur is the same as the value that can be confirmed with the ip command. |
 |                 | IP Packet Reassembles Failed |   ✓   |      ✓       |      ✓       |                                                                                                                                                                                                 |
 | NTP Monitor     | NTP Offset                   |   ✓   |      ✓       |      ✓       |                                                                                                                                                                                                 |

@@ -147,67 +147,67 @@ void HddMonitor::checkSmart(
 
     switch (item) {
       case HddSmartInfoItem::TEMPERATURE: {
-          float temp = static_cast<float>(hdd_itr->second.temp_);
+        float temp = static_cast<float>(hdd_itr->second.temp_);
 
-          level = DiagStatus::OK;
-          if (temp >= itr->second.temp_error_) {
-            level = DiagStatus::ERROR;
-          } else if (temp >= itr->second.temp_warn_) {
-            level = DiagStatus::WARN;
-          }
-          key_str = fmt::format("HDD {}: temperature", index);
-          if (hdd_itr->second.is_valid_temp_) {
-            val_str = fmt::format("{:.1f} DegC", temp);
-          } else {
-            val_str = "not available";
-          }
-        } break;
+        level = DiagStatus::OK;
+        if (temp >= itr->second.temp_error_) {
+          level = DiagStatus::ERROR;
+        } else if (temp >= itr->second.temp_warn_) {
+          level = DiagStatus::WARN;
+        }
+        key_str = fmt::format("HDD {}: temperature", index);
+        if (hdd_itr->second.is_valid_temp_) {
+          val_str = fmt::format("{:.1f} DegC", temp);
+        } else {
+          val_str = "not available";
+        }
+      } break;
       case HddSmartInfoItem::POWER_ON_HOURS: {
-          int64_t power_on_hours = static_cast<int64_t>(hdd_itr->second.power_on_hours_);
+        int64_t power_on_hours = static_cast<int64_t>(hdd_itr->second.power_on_hours_);
 
-          level = DiagStatus::OK;
-          if (power_on_hours >= itr->second.power_on_hours_warn_) {
-            level = DiagStatus::WARN;
-          }
-          key_str = fmt::format("HDD {}: power on hours", index);
-          if (hdd_itr->second.is_valid_power_on_hours_) {
-            val_str = fmt::format("{} Hours", hdd_itr->second.power_on_hours_);
-          } else {
-            val_str = "not available";
-          }
-        } break;
+        level = DiagStatus::OK;
+        if (power_on_hours >= itr->second.power_on_hours_warn_) {
+          level = DiagStatus::WARN;
+        }
+        key_str = fmt::format("HDD {}: power on hours", index);
+        if (hdd_itr->second.is_valid_power_on_hours_) {
+          val_str = fmt::format("{} Hours", hdd_itr->second.power_on_hours_);
+        } else {
+          val_str = "not available";
+        }
+      } break;
       case HddSmartInfoItem::TOTAL_DATA_WRITTEN: {
-          uint64_t total_data_written = static_cast<uint64_t>(hdd_itr->second.total_data_written_);
+        uint64_t total_data_written = static_cast<uint64_t>(hdd_itr->second.total_data_written_);
 
-          level = DiagStatus::OK;
-          if (total_data_written >= itr->second.total_data_written_warn_) {
-            level = DiagStatus::WARN;
-          }
-          key_str = fmt::format("HDD {}: total data written", index);
-          if (hdd_itr->second.is_valid_total_data_written_) {
-            val_str = fmt::format("{}", hdd_itr->second.total_data_written_);
-          } else {
-            val_str = "not available";
-          }
-        } break;
+        level = DiagStatus::OK;
+        if (total_data_written >= itr->second.total_data_written_warn_) {
+          level = DiagStatus::WARN;
+        }
+        key_str = fmt::format("HDD {}: total data written", index);
+        if (hdd_itr->second.is_valid_total_data_written_) {
+          val_str = fmt::format("{}", hdd_itr->second.total_data_written_);
+        } else {
+          val_str = "not available";
+        }
+      } break;
       case HddSmartInfoItem::RECOVERED_ERROR: {
-          int32_t recovered_error = static_cast<int32_t>(hdd_itr->second.recovered_error_);
-          if (initial_recovered_errors_.find(itr->first) == initial_recovered_errors_.end()) {
-            initial_recovered_errors_[itr->first] = recovered_error;
-          }
-          recovered_error -= initial_recovered_errors_[itr->first];
+        int32_t recovered_error = static_cast<int32_t>(hdd_itr->second.recovered_error_);
+        if (initial_recovered_errors_.find(itr->first) == initial_recovered_errors_.end()) {
+          initial_recovered_errors_[itr->first] = recovered_error;
+        }
+        recovered_error -= initial_recovered_errors_[itr->first];
 
-          level = DiagStatus::OK;
-          if (recovered_error >= itr->second.recovered_error_warn_) {
-            level = DiagStatus::WARN;
-          }
-          key_str = fmt::format("HDD {}: recovered error", index);
-          if (hdd_itr->second.is_valid_recovered_error_) {
-            val_str = fmt::format("{}", hdd_itr->second.recovered_error_);
-          } else {
-            val_str = "not available";
-          }
-        } break;
+        level = DiagStatus::OK;
+        if (recovered_error >= itr->second.recovered_error_warn_) {
+          level = DiagStatus::WARN;
+        }
+        key_str = fmt::format("HDD {}: recovered error", index);
+        if (hdd_itr->second.is_valid_recovered_error_) {
+          val_str = fmt::format("{}", hdd_itr->second.recovered_error_);
+        } else {
+          val_str = "not available";
+        }
+      } break;
       default:
         break;
     }
@@ -400,41 +400,41 @@ void HddMonitor::checkStatistics(
 
     switch (item) {
       case HddStatItem::READ_DATA_RATE: {
-          float read_data_rate = hdd_stats_[itr->first].read_data_rate_MBs_;
+        float read_data_rate = hdd_stats_[itr->first].read_data_rate_MBs_;
 
-          if (read_data_rate >= itr->second.read_data_rate_warn_) {
-            level = DiagStatus::WARN;
-          }
-          key_str = fmt::format("HDD {}: data rate of read", hdd_index);
-          val_str = fmt::format("{:.2f} MB/s", read_data_rate);
-        } break;
+        if (read_data_rate >= itr->second.read_data_rate_warn_) {
+          level = DiagStatus::WARN;
+        }
+        key_str = fmt::format("HDD {}: data rate of read", hdd_index);
+        val_str = fmt::format("{:.2f} MB/s", read_data_rate);
+      } break;
       case HddStatItem::WRITE_DATA_RATE: {
-          float write_data_rate = hdd_stats_[itr->first].write_data_rate_MBs_;
+        float write_data_rate = hdd_stats_[itr->first].write_data_rate_MBs_;
 
-          if (write_data_rate >= itr->second.write_data_rate_warn_) {
-            level = DiagStatus::WARN;
-          }
-          key_str = fmt::format("HDD {}: data rate of write", hdd_index);
-          val_str = fmt::format("{:.2f} MB/s", write_data_rate);
-        } break;
+        if (write_data_rate >= itr->second.write_data_rate_warn_) {
+          level = DiagStatus::WARN;
+        }
+        key_str = fmt::format("HDD {}: data rate of write", hdd_index);
+        val_str = fmt::format("{:.2f} MB/s", write_data_rate);
+      } break;
       case HddStatItem::READ_IOPS: {
-          float read_iops = hdd_stats_[itr->first].read_iops_;
+        float read_iops = hdd_stats_[itr->first].read_iops_;
 
-          if (read_iops >= itr->second.read_iops_warn_) {
-            level = DiagStatus::WARN;
-          }
-          key_str = fmt::format("HDD {}: IOPS of read", hdd_index);
-          val_str = fmt::format("{:.2f} IOPS", read_iops);
-        } break;
+        if (read_iops >= itr->second.read_iops_warn_) {
+          level = DiagStatus::WARN;
+        }
+        key_str = fmt::format("HDD {}: IOPS of read", hdd_index);
+        val_str = fmt::format("{:.2f} IOPS", read_iops);
+      } break;
       case HddStatItem::WRITE_IOPS: {
-          float write_iops = hdd_stats_[itr->first].write_iops_;
+        float write_iops = hdd_stats_[itr->first].write_iops_;
 
-          if (write_iops >= itr->second.write_iops_warn_) {
-            level = DiagStatus::WARN;
-          }
-          key_str = fmt::format("HDD {}: IOPS of write", hdd_index);
-          val_str = fmt::format("{:.2f} IOPS", write_iops);
-        } break;
+        if (write_iops >= itr->second.write_iops_warn_) {
+          level = DiagStatus::WARN;
+        }
+        key_str = fmt::format("HDD {}: IOPS of write", hdd_index);
+        val_str = fmt::format("{:.2f} IOPS", write_iops);
+      } break;
       default:
         break;
     }

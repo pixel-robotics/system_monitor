@@ -44,16 +44,16 @@ public:
     array_ = *diag_msg;
   }
 
-  void addTempName(const std::string & path) {temps_.emplace_back(path, path);}
-  void clearTempNames() {temps_.clear();}
+  void addTempName(const std::string & path) { temps_.emplace_back(path, path); }
+  void clearTempNames() { temps_.clear(); }
 
-  void addLoadName(const std::string & path) {loads_.emplace_back(path, path);}
-  void clearLoadNames() {loads_.clear();}
+  void addLoadName(const std::string & path) { loads_.emplace_back(path, path); }
+  void clearLoadNames() { loads_.clear(); }
 
-  void addFreqName(const std::string & path) {freqs_.emplace_back(path, path);}
-  void clearFreqNames() {freqs_.clear();}
+  void addFreqName(const std::string & path) { freqs_.emplace_back(path, path); }
+  void clearFreqNames() { freqs_.clear(); }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
   const std::string removePrefix(const std::string & name)
   {
@@ -479,7 +479,7 @@ public:
   : GPUMonitorBase(node_name, options)
   {
   }
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 };
 
 TEST_F(GPUMonitorTestSuite, dummyGPUMonitorTest)

@@ -54,19 +54,19 @@ public:
     array_ = *diag_msg;
   }
 
-  void addTempName(const std::string & path) {temps_.emplace_back(path, path);}
-  void clearTempNames() {temps_.clear();}
-  bool isTempNamesEmpty() {return temps_.empty();}
+  void addTempName(const std::string & path) { temps_.emplace_back(path, path); }
+  void clearTempNames() { temps_.clear(); }
+  bool isTempNamesEmpty() { return temps_.empty(); }
 
-  void addFreqName(int index, const std::string & path) {freqs_.emplace_back(index, path);}
-  void clearFreqNames() {freqs_.clear();}
+  void addFreqName(int index, const std::string & path) { freqs_.emplace_back(index, path); }
+  void clearFreqNames() { freqs_.clear(); }
 
-  void setMpstatExists(bool mpstat_exists) {mpstat_exists_ = mpstat_exists;}
+  void setMpstatExists(bool mpstat_exists) { mpstat_exists_ = mpstat_exists; }
 
-  void changeUsageWarn(float usage_warn) {usage_warn_ = usage_warn;}
-  void changeUsageError(float usage_error) {usage_error_ = usage_error;}
+  void changeUsageWarn(float usage_warn) { usage_warn_ = usage_warn; }
+  void changeUsageError(float usage_error) { usage_error_ = usage_error; }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
   const std::string removePrefix(const std::string & name)
   {
@@ -162,8 +162,7 @@ protected:
   }
 };
 
-enum ThreadTestMode
-{
+enum ThreadTestMode {
   Normal = 0,
   Throttling,
   ReturnsError,
@@ -895,7 +894,7 @@ public:
   : CPUMonitorBase(node_name, options)
   {
   }
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 };
 
 TEST_F(CPUMonitorTestSuite, dummyCPUMonitorTest)
