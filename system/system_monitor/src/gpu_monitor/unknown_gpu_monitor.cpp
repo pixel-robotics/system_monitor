@@ -21,8 +21,7 @@
 
 #include <string>
 
-GPUMonitor::GPUMonitor(const rclcpp::NodeOptions & options)
-: GPUMonitorBase("gpu_monitor", options)
+GPUMonitor::GPUMonitor(const rclcpp::NodeOptions & options) : GPUMonitorBase("gpu_monitor", options)
 {
 }
 

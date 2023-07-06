@@ -32,8 +32,7 @@
 
 namespace fs = boost::filesystem;
 
-GPUMonitor::GPUMonitor(const rclcpp::NodeOptions & options)
-: GPUMonitorBase("gpu_monitor", options)
+GPUMonitor::GPUMonitor(const rclcpp::NodeOptions & options) : GPUMonitorBase("gpu_monitor", options)
 {
   getTempNames();
   getLoadNames();
@@ -174,8 +173,7 @@ void GPUMonitor::getLoadNames()
   const fs::path root("/sys/devices");
 
   for (const fs::path & path :
-    boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator()))
-  {
+       boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator())) {
     if (!fs::is_directory(path)) {
       continue;
     }
@@ -199,8 +197,7 @@ void GPUMonitor::getFreqNames()
   const fs::path root("/sys/class/devfreq");
 
   for (const fs::path & path :
-    boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator()))
-  {
+       boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator())) {
     // /sys/class/devfreq/?????/cur_freq ?
     if (!fs::is_directory(path)) {
       continue;

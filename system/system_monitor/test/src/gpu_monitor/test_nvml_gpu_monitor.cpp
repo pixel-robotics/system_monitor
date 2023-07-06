@@ -40,22 +40,22 @@ public:
     array_ = *diag_msg;
   }
 
-  void addGPU(const gpu_info & info) {gpus_.push_back(info);}
-  void clearGPU() {gpus_.clear();}
+  void addGPU(const gpu_info & info) { gpus_.push_back(info); }
+  void clearGPU() { gpus_.clear(); }
 
-  void changeTempWarn(float temp_warn) {temp_warn_ = temp_warn;}
-  void changeTempError(float temp_error) {temp_error_ = temp_error;}
+  void changeTempWarn(float temp_warn) { temp_warn_ = temp_warn; }
+  void changeTempError(float temp_error) { temp_error_ = temp_error; }
 
-  void changeGPUUsageWarn(float gpu_usage_warn) {gpu_usage_warn_ = gpu_usage_warn;}
-  void changeGPUUsageError(float gpu_usage_error) {gpu_usage_error_ = gpu_usage_error;}
+  void changeGPUUsageWarn(float gpu_usage_warn) { gpu_usage_warn_ = gpu_usage_warn; }
+  void changeGPUUsageError(float gpu_usage_error) { gpu_usage_error_ = gpu_usage_error; }
 
-  void changeMemoryUsageWarn(float memory_usage_warn) {memory_usage_warn_ = memory_usage_warn;}
+  void changeMemoryUsageWarn(float memory_usage_warn) { memory_usage_warn_ = memory_usage_warn; }
   void changeMemoryUsageError(float memory_usage_error)
   {
     memory_usage_error_ = memory_usage_error;
   }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
   const std::string removePrefix(const std::string & name)
   {
@@ -97,7 +97,7 @@ protected:
       "/diagnostics", 1000, std::bind(&TestGPUMonitor::diagCallback, monitor_.get(), _1));
   }
 
-  void TearDown() {rclcpp::shutdown();}
+  void TearDown() { rclcpp::shutdown(); }
 
   bool findValue(const DiagStatus status, const std::string & key, std::string & value)  // NOLINT
   {
@@ -532,7 +532,7 @@ public:
   : GPUMonitorBase(node_name, options)
   {
   }
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 };
 
 TEST_F(GPUMonitorTestSuite, dummyGPUMonitorTest)

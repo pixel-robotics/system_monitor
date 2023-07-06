@@ -21,7 +21,7 @@
 
 #include "system_monitor/system_monitor_utility.hpp"
 
-#include <tier4_autoware_utils/system/stop_watch.hpp>
+#include <system_monitor/stop_watch.hpp>
 
 #include <fmt/format.h>
 

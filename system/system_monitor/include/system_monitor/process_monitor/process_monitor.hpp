@@ -117,9 +117,9 @@ protected:
 
   int num_of_procs_;  //!< @brief number of processes to show
   std::vector<std::shared_ptr<DiagTask>>
-  load_tasks_;    //!< @brief list of diagnostics tasks for high load procs
+    load_tasks_;  //!< @brief list of diagnostics tasks for high load procs
   std::vector<std::shared_ptr<DiagTask>>
-  memory_tasks_;                        //!< @brief list of diagnostics tasks for high memory procs
+    memory_tasks_;                      //!< @brief list of diagnostics tasks for high memory procs
   rclcpp::TimerBase::SharedPtr timer_;  //!< @brief timer to execute top command
   std::string top_output_;              //!< @brief output from top command
   bool is_top_error_;                   //!< @brief flag if an top error occurs

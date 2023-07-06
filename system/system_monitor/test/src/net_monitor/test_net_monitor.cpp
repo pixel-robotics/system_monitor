@@ -45,12 +45,12 @@ public:
     array_ = *diag_msg;
   }
 
-  void changeUsageWarn(float usage_warn) {usage_warn_ = usage_warn;}
+  void changeUsageWarn(float usage_warn) { usage_warn_ = usage_warn; }
 
-  const std::vector<std::string> getDeviceParams() {return device_params_;}
-  void clearDeviceParams() {device_params_.clear();}
+  const std::vector<std::string> getDeviceParams() { return device_params_; }
+  void clearDeviceParams() { device_params_.clear(); }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
   const std::string removePrefix(const std::string & name)
   {
@@ -92,7 +92,7 @@ protected:
       "/diagnostics", 1000, std::bind(&TestNetMonitor::diagCallback, monitor_.get(), _1));
   }
 
-  void TearDown() {rclcpp::shutdown();}
+  void TearDown() { rclcpp::shutdown(); }
 
   bool findValue(const DiagStatus status, const std::string & key, std::string & value)  // NOLINT
   {

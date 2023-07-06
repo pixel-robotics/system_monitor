@@ -61,11 +61,11 @@ CPUMonitorBase::CPUMonitorBase(const std::string & node_name, const rclcpp::Node
   mpstat_exists_ = (p.empty()) ? false : true;
 
   updater_.setHardwareID(hostname_);
-  // updater_.add("CPU Temperature", this, &CPUMonitorBase::checkTemp);
+  updater_.add("CPU Temperature", this, &CPUMonitorBase::checkTemp);
   updater_.add("CPU Usage", this, &CPUMonitorBase::checkUsage);
   updater_.add("CPU Load Average", this, &CPUMonitorBase::checkLoad);
-  // updater_.add("CPU Thermal Throttling", this, &CPUMonitorBase::checkThrottling);
-  // updater_.add("CPU Frequency", this, &CPUMonitorBase::checkFrequency);
+  updater_.add("CPU Thermal Throttling", this, &CPUMonitorBase::checkThrottling);
+  updater_.add("CPU Frequency", this, &CPUMonitorBase::checkFrequency);
 
   // Publisher
   rclcpp::QoS durable_qos{1};
@@ -74,7 +74,10 @@ CPUMonitorBase::CPUMonitorBase(const std::string & node_name, const rclcpp::Node
     this->create_publisher<system_monitor_interfaces::msg::CpuUsage>("~/cpu_usage", durable_qos);
 }
 
-void CPUMonitorBase::update() {updater_.force_update();}
+void CPUMonitorBase::update()
+{
+  updater_.force_update();
+}
 
 void CPUMonitorBase::checkTemp(diagnostic_updater::DiagnosticStatusWrapper & stat)
 {
@@ -406,8 +409,7 @@ void CPUMonitorBase::getFreqNames()
   const fs::path root("/sys/devices/system/cpu");
 
   for (const fs::path & path :
-    boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator()))
-  {
+       boost::make_iterator_range(fs::directory_iterator(root), fs::directory_iterator())) {
     if (!fs::is_directory(path)) {
       continue;
     }
@@ -428,10 +430,9 @@ void CPUMonitorBase::getFreqNames()
     freqs_.push_back(freq);
   }
 
-  std::sort(
-    freqs_.begin(), freqs_.end(), [](const cpu_freq_info & c1, const cpu_freq_info & c2) {
-      return c1.index_ < c2.index_;
-    }); // NOLINT
+  std::sort(freqs_.begin(), freqs_.end(), [](const cpu_freq_info & c1, const cpu_freq_info & c2) {
+    return c1.index_ < c2.index_;
+  });  // NOLINT
 }
 
 void CPUMonitorBase::publishCpuUsage(system_monitor_interfaces::msg::CpuUsage usage)

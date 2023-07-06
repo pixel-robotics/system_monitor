@@ -84,8 +84,7 @@ struct SysfsDevStat
   uint64_t wr_ios_;      //!< @brief number of write operations issued to the device
   uint64_t wr_sectors_;  //!< @brief number of sectors written
 
-  SysfsDevStat()
-  : rd_ios_(0), rd_sectors_(0), wr_ios_(0), wr_sectors_(0) {}
+  SysfsDevStat() : rd_ios_(0), rd_sectors_(0), wr_ios_(0), wr_sectors_(0) {}
 };
 
 /**
@@ -101,8 +100,7 @@ struct HddStat
   float write_iops_;                  //!< @brief IOPS of write
   SysfsDevStat last_sysfs_dev_stat_;  //!< @brief last statistics of sysfs device
 
-  HddStat()
-  : read_data_rate_MBs_(0.0), write_data_rate_MBs_(0.0), read_iops_(0.0), write_iops_(0.0)
+  HddStat() : read_data_rate_MBs_(0.0), write_data_rate_MBs_(0.0), read_iops_(0.0), write_iops_(0.0)
   {
   }
 };
@@ -110,8 +108,7 @@ struct HddStat
 /**
  * @brief SMART information items to check
  */
-enum class HddSmartInfoItem : uint32_t
-{
+enum class HddSmartInfoItem : uint32_t {
   TEMPERATURE = 0,
   POWER_ON_HOURS = 1,
   TOTAL_DATA_WRITTEN = 2,
@@ -122,8 +119,7 @@ enum class HddSmartInfoItem : uint32_t
 /**
  * @brief HDD statistics items to check
  */
-enum class HddStatItem : uint32_t
-{
+enum class HddStatItem : uint32_t {
   READ_DATA_RATE = 0,
   WRITE_DATA_RATE = 1,
   READ_IOPS = 2,
@@ -332,9 +328,9 @@ protected:
   int hdd_reader_port_;                         //!< @brief port number to connect to hdd_reader
   std::map<std::string, HddParam> hdd_params_;  //!< @brief list of error and warning levels
   std::map<std::string, bool>
-  hdd_connected_flags_;    //!< @brief list of flag whether HDD is connected
+    hdd_connected_flags_;  //!< @brief list of flag whether HDD is connected
   std::map<std::string, uint32_t>
-  initial_recovered_errors_;                  //!< @brief list of initial recovered error count
+    initial_recovered_errors_;                //!< @brief list of initial recovered error count
   std::map<std::string, HddStat> hdd_stats_;  //!< @brief list of HDD statistics
   //!< @brief diagnostic of connection
   diagnostic_updater::DiagnosticStatusWrapper connect_diag_;
@@ -353,8 +349,8 @@ protected:
     {{DiagStatus::OK, "OK"}, {DiagStatus::WARN, "warranty period"}, {DiagStatus::ERROR, "unused"}},
     // recovered error count
     {{DiagStatus::OK, "OK"},
-      {DiagStatus::WARN, "high soft error rate"},
-      {DiagStatus::ERROR, "unused"}},
+     {DiagStatus::WARN, "high soft error rate"},
+     {DiagStatus::ERROR, "unused"}},
   };
 
   /**
@@ -371,20 +367,20 @@ protected:
   const std::map<int, const char *> stat_dicts_[static_cast<uint32_t>(HddStatItem::SIZE)] = {
     // data rate of read
     {{DiagStatus::OK, "OK"},
-      {DiagStatus::WARN, "high data rate of read"},
-      {DiagStatus::ERROR, "unused"}},
+     {DiagStatus::WARN, "high data rate of read"},
+     {DiagStatus::ERROR, "unused"}},
     // data rate of write
     {{DiagStatus::OK, "OK"},
-      {DiagStatus::WARN, "high data rate of write"},
-      {DiagStatus::ERROR, "unused"}},
+     {DiagStatus::WARN, "high data rate of write"},
+     {DiagStatus::ERROR, "unused"}},
     // IOPS of read
     {{DiagStatus::OK, "OK"},
-      {DiagStatus::WARN, "high IOPS of read"},
-      {DiagStatus::ERROR, "unused"}},
+     {DiagStatus::WARN, "high IOPS of read"},
+     {DiagStatus::ERROR, "unused"}},
     // IOPS of write
     {{DiagStatus::OK, "OK"},
-      {DiagStatus::WARN, "high IOPS of write"},
-      {DiagStatus::ERROR, "unused"}},
+     {DiagStatus::WARN, "high IOPS of write"},
+     {DiagStatus::ERROR, "unused"}},
   };
 
   /**

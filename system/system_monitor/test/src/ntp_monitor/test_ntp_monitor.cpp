@@ -46,12 +46,12 @@ public:
     array_ = *diag_msg;
   }
 
-  void changeOffsetWarn(float offset_warn) {offset_warn_ = offset_warn;}
-  void changeOffsetError(float offset_error) {offset_error_ = offset_error;}
+  void changeOffsetWarn(float offset_warn) { offset_warn_ = offset_warn; }
+  void changeOffsetError(float offset_error) { offset_error_ = offset_error; }
 
-  void setNtpdateExists(bool ntpdate_exists) {ntpdate_exists_ = ntpdate_exists;}
+  void setNtpdateExists(bool ntpdate_exists) { ntpdate_exists_ = ntpdate_exists; }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
   const std::string removePrefix(const std::string & name)
   {

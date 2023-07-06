@@ -80,9 +80,9 @@ public:
     }
   }
 
-  void clearHddParams() {hdd_params_.clear();}
+  void clearHddParams() { hdd_params_.clear(); }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
   const std::string removePrefix(const std::string & name)
   {
@@ -167,8 +167,7 @@ protected:
   }
 };
 
-enum ThreadTestMode
-{
+enum ThreadTestMode {
   Normal = 0,
   Hot,
   CriticalHot,

@@ -32,8 +32,7 @@
 #include <string>
 #include <vector>
 
-GPUMonitor::GPUMonitor(const rclcpp::NodeOptions & options)
-: GPUMonitorBase("gpu_monitor", options)
+GPUMonitor::GPUMonitor(const rclcpp::NodeOptions & options) : GPUMonitorBase("gpu_monitor", options)
 {
   nvmlReturn_t ret = nvmlInit();
   if (ret != NVML_SUCCESS) {

@@ -38,7 +38,7 @@ public:
     array_ = *diag_msg;
   }
 
-  void update() {updater_.force_update();}
+  void update() { updater_.force_update(); }
 
 private:
   diagnostic_msgs::msg::DiagnosticArray array_;
@@ -63,10 +63,11 @@ protected:
       "/diagnostics", 1000, std::bind(&TestGPUMonitor::diagCallback, monitor_.get(), _1));
   }
 
-  void TearDown() {rclcpp::shutdown();}
+  void TearDown() { rclcpp::shutdown(); }
 };
 
-TEST_F(GPUMonitorTestSuite, test) {
+TEST_F(GPUMonitorTestSuite, test)
+{
   ASSERT_TRUE(true);
 }
 
