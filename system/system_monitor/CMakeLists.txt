@@ -109,18 +109,6 @@ ament_auto_add_library(gpu_monitor_lib SHARED
 #  src/voltage_monitor/voltage_monitor.cpp
 #)
 
-ament_auto_add_executable(msr_reader
-  reader/msr_reader/msr_reader.cpp
-)
-
-ament_auto_add_executable(hdd_reader
-  reader/hdd_reader/hdd_reader.cpp
-)
-
-ament_auto_add_executable(traffic_reader
-  reader/traffic_reader/traffic_reader_main.cpp
-  reader/traffic_reader/traffic_reader_service.cpp
-)
 
 find_library(NL3 nl-3 REQUIRED)
 find_library(NLGENL3 nl-genl-3 REQUIRED)
@@ -142,9 +130,6 @@ target_link_libraries(net_monitor_lib ${NL_LIBS} ${LIBRARIES})
 target_link_libraries(ntp_monitor_lib ${Boost_LIBRARIES} ${LIBRARIES})
 target_link_libraries(process_monitor_lib ${LIBRARIES})
 target_link_libraries(gpu_monitor_lib ${GPU_LIBRARY} ${Boost_LIBRARIES} ${LIBRARIES})
-target_link_libraries(msr_reader ${Boost_LIBRARIES} ${LIBRARIES})
-target_link_libraries(hdd_reader ${Boost_LIBRARIES} ${LIBRARIES})
-target_link_libraries(traffic_reader ${Boost_LIBRARIES} ${LIBRARIES})
 
 rclcpp_components_register_node(cpu_monitor_lib
   PLUGIN "CPUMonitor"
