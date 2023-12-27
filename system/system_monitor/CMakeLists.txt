@@ -105,9 +105,9 @@ ament_auto_add_library(gpu_monitor_lib SHARED
   ${GPU_MONITOR_SOURCE}
 )
 
-ament_auto_add_library(voltage_monitor_lib SHARED
-  src/voltage_monitor/voltage_monitor.cpp
-)
+#ament_auto_add_library(voltage_monitor_lib SHARED
+#  src/voltage_monitor/voltage_monitor.cpp
+#)
 
 ament_auto_add_executable(msr_reader
   reader/msr_reader/msr_reader.cpp
@@ -134,7 +134,7 @@ find_package(Boost REQUIRED COMPONENTS
 )
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(voltage_monitor_lib ${Boost_LIBRARIES} ${LIBRARIES})
+# target_link_libraries(voltage_monitor_lib ${Boost_LIBRARIES} ${LIBRARIES})
 target_link_libraries(cpu_monitor_lib ${Boost_LIBRARIES} ${LIBRARIES})
 target_link_libraries(hdd_monitor_lib ${Boost_LIBRARIES} ${LIBRARIES})
 target_link_libraries(mem_monitor_lib ${LIBRARIES})
@@ -181,10 +181,10 @@ rclcpp_components_register_node(gpu_monitor_lib
   EXECUTABLE gpu_monitor
 )
 
-rclcpp_components_register_node(voltage_monitor_lib
-  PLUGIN "VoltageMonitor"
-  EXECUTABLE voltage_monitor
-)
+#rclcpp_components_register_node(voltage_monitor_lib
+#  PLUGIN "VoltageMonitor"
+#  EXECUTABLE voltage_monitor
+#)
 
 # TODO(yunus.caliskan): Port the tests to ROS 2, robustify the tests.
 if(BUILD_TESTING)
